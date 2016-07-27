@@ -1,0 +1,65 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`paper-input-upload`
+Paper input for file type element
+
+@demo demo/index.html
+-->
+
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<dom-module id="paper-input-upload">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      paper-input {
+        display: inline-block;
+        width: 68%;
+      }
+
+      paper-button {
+        display: inline-block;
+        width: 28%;
+        vertical-align: bottom;
+        background-color: var(--paper-indigo-500);
+        color: white;
+      }
+
+    </style>
+    <div id="{{id}}" name="{{name}}">
+      <input id="inputfile" hidden name="{{name}}" type="file" onchange="document.getElementById('subfile').innerHTML = document.getElementById('inputfile').value">
+      <div class="input-group">
+        <paper-input id="subfile" type="text" label="Input file..."></paper-input>
+        <paper-button raised onclick="document.getElementById('inputfile').click();"><iron-icon icon="search"></iron-icon>browse</paper-button>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'paper-input-upload',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'paper-input-upload',
+        },
+      },
+
+    });
+
+    // document.getElementById('inputFile')
+
+        //  $('#inputfile').change(function(){
+        //     $('#subfile').val($(this).val()); // Duplicate value to subfile
+        // });
+
+  </script>
+</dom-module>
