@@ -33,11 +33,11 @@ Paper input for file type element
 
     </style>
     <div id="{{id}}" name="{{name}}">
-      <input id="inputfile" hidden name="{{name}}" type="file" onchange="document.getElementById('subfile').innerHTML = document.getElementById('inputfile').value">
       <div class="input-group">
         <paper-input id="subfile" type="text" label="Input file..."></paper-input>
-        <paper-button raised onclick="document.getElementById('inputfile').click();"><iron-icon icon="search"></iron-icon>browse</paper-button>
+        <paper-button raised on-click="_browse"><iron-icon icon="search"></iron-icon>browse</paper-button>
       </div>
+      <input id="inputfile" hidden name="{{name}}" type="file" on-change="_file">
     </div>
   </template>
 
@@ -53,7 +53,22 @@ Paper input for file type element
         },
       },
 
+      _browse: function() {
+        var elem = this.$.inputfile;
+        if (elem && document.createEvent) { // sanity check
+          var evt = document.createEvent("MouseEvents");
+          evt.initEvent("click", true, false);
+          elem.dispatchEvent(evt);
+        }
+      },
+
+      _file: function() {
+        var elem = this.$.subfile;
+        elem.innerHTML = this.$.inputfile.value;
+      }
+
     });
+
 
     // document.getElementById('inputFile')
 
