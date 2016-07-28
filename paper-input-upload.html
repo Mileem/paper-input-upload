@@ -7,7 +7,7 @@ Paper input for file type element
 @demo demo/index.html
 -->
 
-<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
@@ -20,22 +20,29 @@ Paper input for file type element
 
       paper-input {
         display: inline-block;
-        width: 68%;
+        width: 88%;
       }
 
-      paper-button {
+      paper-icon-button {
         display: inline-block;
-        width: 28%;
+        width: 11%;
         vertical-align: bottom;
         background-color: var(--paper-indigo-500);
         color: white;
+        -moz-border-radius: 70px;
+        -webkit-border-radius: 70px;
+        border-radius: 70px;
+      }
+
+      paper-icon-button:hover {
+        background-color: var(--paper-indigo-300);
       }
 
     </style>
     <div id="{{id}}" name="{{name}}">
       <div class="input-group">
-        <paper-input id="subfile" type="text" label="Input file..."></paper-input>
-        <paper-button raised on-click="_browse"><iron-icon icon="search"></iron-icon>browse</paper-button>
+        <paper-input id="subfile" type="text" label="Choose a file..."></paper-input>
+        <paper-icon-button icon="search" title="browse" on-click="_browse"></paper-icon-button>
       </div>
       <input id="inputfile" hidden name="{{name}}" type="file" on-change="_file">
     </div>
@@ -68,13 +75,5 @@ Paper input for file type element
       }
 
     });
-
-
-    // document.getElementById('inputFile')
-
-        //  $('#inputfile').change(function(){
-        //     $('#subfile').val($(this).val()); // Duplicate value to subfile
-        // });
-
   </script>
 </dom-module>
