@@ -16,16 +16,15 @@ Paper input for file type element
     <style>
       :host {
         display: block;
+        width: 100%;
       }
 
       paper-input {
         display: inline-block;
-        width: 88%;
+        width: 22em;
       }
 
       paper-icon-button {
-        display: inline-block;
-        width: 11%;
         vertical-align: bottom;
         background-color: var(--paper-indigo-500);
         color: white;
@@ -41,7 +40,7 @@ Paper input for file type element
     </style>
     <div id="{{id}}" name="{{name}}">
       <div class="input-group">
-        <paper-input id="subfile" type="text" label="Choose a file..."></paper-input>
+        <paper-input id="subfile" type="text" label="Choose a file..." disabled></paper-input>
         <paper-icon-button icon="search" title="browse" on-click="_browse"></paper-icon-button>
       </div>
       <input id="inputfile" hidden name="{{name}}" type="file" on-change="_file">
